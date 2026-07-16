@@ -64,7 +64,7 @@ FERTILITY_FILE = "fertility_results.json"
 ## 🚀 Getting Started / How to Use
 
 ### Prerequisites
-Assuming you have cloned the repository and the trained vocabulary file (`bpe_tokenizer.json`) is already available in your directory, you only need to install the Hugging Face `tokenizers` library to use it:
+####Assuming you have cloned the repository and the trained vocabulary file (`bpe_tokenizer.json`) is already available in your directory, you      only need to install the Hugging Face `tokenizers` library to use it:
 
 ```bash
 pip install tokenizers
