@@ -60,3 +60,29 @@ TEST_DATA_DIR = "data_test"
 REGISTRY_FILE = "wiki_registry.json"
 TOKENIZER_FILE = "bpe_tokenizer.json"
 FERTILITY_FILE = "fertility_results.json"
+
+## 🚀 Getting Started / How to Use
+
+### Prerequisites
+Assuming you have cloned the repository and the trained vocabulary file (`bpe_tokenizer.json`) is already available in your directory, you only need to install the Hugging Face `tokenizers` library to use it:
+
+```bash
+pip install tokenizers
+
+from tokenizer import TokenizerHandler
+
+# 1. Initialize the handler with the pre-trained model path
+tokenizer = TokenizerHandler("bpe_tokenizer.json")
+
+# 2. Define the text you want to process
+text = "India's population is 1,428,627,663"
+
+# 3. Encode text to token IDs
+token_ids = tokenizer.encode_ids(text)
+print(f"Token IDs: {token_ids}")
+
+# 4. Decode token IDs back to a human-readable string
+decoded_text = tokenizer.decode(token_ids)
+print(f"Decoded Text: {decoded_text}")
+
+
