@@ -13,9 +13,9 @@ if __name__ == "__main__":
     
     # Target pages format: (page_name, language, number_of_downloads)
     pages = [
-        ("India", "en", 8),
+        ("India", "en", 9),
         ("भारत", "hi", 5),  
-        ("భారతదేశం", "te", 8),               
+        ("భారతదేశం", "te", 9),               
         ("भारत", "bh", 4),        
     ]
     

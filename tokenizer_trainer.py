@@ -5,7 +5,7 @@ import glob
 import requests
 from tokenizers import Tokenizer, models, trainers,Regex,decoders
 from tokenizers.normalizers import NFKC
-from tokenizers.pre_tokenizers import Whitespace, Punctuation, Sequence, Split
+from tokenizers.pre_tokenizers import Whitespace, Punctuation, Sequence, Split,Metaspace
 from config import DATA_DIR, TOKENIZER_FILE
 
 
@@ -40,7 +40,7 @@ class BPETokenizerTrainer:
         tokenizer.normalizer = NFKC()
 
         # Simple whitespace pre-tokenization
-        tokenizer.pre_tokenizer = Sequence([Whitespace(),Punctuation(),Split(Regex(r"\d{1,3}"), behavior="isolated")])
+        tokenizer.pre_tokenizer = Sequence([Metaspace(),Split(Regex(r"\d{1,3}"), behavior="isolated")])
 
         # Trainer
         trainer = trainers.BpeTrainer(
@@ -50,7 +50,7 @@ class BPETokenizerTrainer:
             show_progress=True
         )
 
-        tokenizer.decoder = decoders.Metaspace(replacement=" ", prepend_scheme="always")
+        tokenizer.decoder  = decoders.Metaspace()
 
         tokenizer.train(
             files=text_files,
@@ -64,4 +64,5 @@ class BPETokenizerTrainer:
         print(f"Vocabulary size: {tokenizer.get_vocab_size()}")
         print(f"Saved to: {self.model_path}")
 
+    
         return True
