@@ -41,9 +41,8 @@ class FertilityAnalyzer:
         fertility_scores = []
         
         for lang, raw_text in lang_texts.items():
-            # Count alphanumeric words AND individual punctuation marks as valid baseline words
-            num_words = len(re.findall(r'\w+|[^\w\s]', raw_text)) 
-            
+            #num_words = len(re.findall(r"[\p{Letter}\p{Number}]+", raw_text))
+            num_words = len(raw_text.split())  # Simple word count based on spaces
             if num_words == 0:
                 continue
                 

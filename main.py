@@ -13,20 +13,20 @@ if __name__ == "__main__":
     
     # Target pages format: (page_name, language, number_of_downloads)
     pages = [
-        ("India", "en", 9),
+        ("India", "en", 6),
         ("भारत", "hi", 5),  
-        ("భారతదేశం", "te", 9),               
-        ("भारत", "bh", 4),        
+        ("భారతదేశం", "te", 8),               
+        ("भारत", "bh", 5),        
     ]
     
     # 1. Download and Clean sequentially
     for page_name, language, num_downloads in pages:
-        for _ in range(num_downloads):
+        for i in range(num_downloads):
             # Fetch the raw HTML using the title and language
             html, count = downloader.fetch_raw_html(page_name, language)
             
             if html:
-                cleaner.clean_and_save(html, page_name, language, count)
+                cleaner.clean_and_save(html, page_name, language, i)
             
     # 2. Train Tokenizer with NFKC normalization
     trainer = BPETokenizerTrainer()
